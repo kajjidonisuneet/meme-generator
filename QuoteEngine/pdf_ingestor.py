@@ -6,6 +6,7 @@ import os
 from .ingestor_interface import IngestorInterface
 from .quote_model import QuoteModel
 from .text_ingestor import TextIngestor
+import PyPDF2
 
 
 class PDFIngestor(IngestorInterface):
@@ -35,7 +36,13 @@ class PDFIngestor(IngestorInterface):
 
             tmp = os.path.splitext(path)
             tmp = f'{tmp[0]}Converted.txt'
-            subprocess.call(['pdftotext', path, tmp])
+            pdf_file_object = open(path, 'rb')
+            pdf_reader = PyPDF2.PdfFileReader(pdf_file_object)
+            num_pages = pdf_reader.numPages
+            page_object = pdf_reader.getPage(num_pages -1)
+            text = page_object.extractText()
+            text_out_file = open(tmp, 'a')
+            text_out_file.writelines(text)
             quotes = TextIngestor.parse(tmp)
 
         except Exception as error:

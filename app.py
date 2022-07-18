@@ -23,7 +23,7 @@ def setup():
                    '_data/DogQuotes/DogQuotesPDF.pdf',
                    '_data/DogQuotes/DogQuotesCSV.csv']
     base_path = os.path.dirname(__file__)
-    quote_files = [ os.path.join(base_path, path) for path in quote_files] 
+    quote_files = [os.path.join(base_path, path) for path in quote_files] 
     quotes_list = []
     for files in quote_files:
         quotes_list.extend(Ingestor.parse(files))
@@ -64,7 +64,7 @@ def meme_post():
     base_path = os.path.dirname(__file__)
     img_tmp = os.path.join(base_path,'web_temp.png')
     try:
-        responce = requests.get(image_url)
+        responce = requests.get(image_url)      
         with open(img_tmp, 'wb') as image_file:
             image_file.write(responce.content)
     except Exception as error:
