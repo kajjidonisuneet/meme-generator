@@ -18,16 +18,17 @@ meme = MemeEngine('./static')
 
 def setup():
     """Load all resources."""
-    quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
-                   './_data/DogQuotes/DogQuotesDOCX.docx',
-                   './_data/DogQuotes/DogQuotesPDF.pdf',
-                   './_data/DogQuotes/DogQuotesCSV.csv']
-
+    quote_files = ['_data/DogQuotes/DogQuotesTXT.txt',
+                   '_data/DogQuotes/DogQuotesDOCX.docx',
+                   '_data/DogQuotes/DogQuotesPDF.pdf',
+                   '_data/DogQuotes/DogQuotesCSV.csv']
+    base_path = os.path.dirname(__file__)
+    quote_files = [ os.path.join(base_path, path) for path in quote_files] 
     quotes_list = []
     for files in quote_files:
         quotes_list.extend(Ingestor.parse(files))
 
-    images_path = "./_data/photos/dog/"
+    images_path = os.path.join(base_path, "_data/photos/dog/")
 
     imgs_list = []
     for root, _, files in os.walk(images_path):
@@ -60,8 +61,8 @@ def meme_post():
     body = request.form.get('body')
     author = request.form.get('author')
     image_url = request.form.get('image_url')
-
-    img_tmp = './web_temp.png'
+    base_path = os.path.dirname(__file__)
+    img_tmp = os.path.join(base_path,'web_temp.png')
     try:
         responce = requests.get(image_url)
         with open(img_tmp, 'wb') as image_file:
