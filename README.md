@@ -2,6 +2,11 @@
 A web and command line application that generates random or custom memes.
 Deployed link https://suneet-meme-generator.herokuapp.com/
 
+### Buit With
+- Python
+- Flask
+- Pillow
+
 ### Prerequisites
 Install all dependencies given in the `requirements.txt` file using `pip`.
 ```bash
