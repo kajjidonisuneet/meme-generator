@@ -2,7 +2,7 @@
 A web and command line application that generates random or custom memes.
 Deployed link https://suneet-meme-generator.herokuapp.com/
 
-###Features
+### Features
 - Produces a meme by randomly selecting a image and adding meme quote.
 - Meme quotes are read from PDF, CSV, JSON, and TXT Files.
 - Image manipulation is powered by pillow.
