@@ -1,4 +1,5 @@
 ## Meme Generator
+**Project Description**
 A web and command line application that generates random or custom memes.
 Deployed link https://suneet-meme-generator.herokuapp.com/
 
